@@ -1,0 +1,55 @@
+<configuration scan="true">
+
+    <conversionRule conversionWord="coloredLevel" converterClass="play.api.Logger$ColoredLevel" />
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${dir.logs}/${app.name}.log</file>
+        <encoder>
+            <pattern>%date - [%level] -[%file:%line] - %message%n%xException{20}</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${dir.logs}/${app.name}.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+            <maxHistory>90</maxHistory>
+            <totalSizeCap>10GB</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="EVENTS" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${dir.logs}/${app.name}-events.log</file>
+        <encoder>
+            <pattern>%date - [%level] -[%file:%line] - %message%n%xException{20}</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${dir.logs}/${app.name}.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+            <maxHistory>90</maxHistory>
+            <totalSizeCap>10GB</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+    <!-- stdout appender
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%date - [%level] -[%file:%line] - %message%n%xException{20}</pattern>
+        </encoder>
+    </appender>
+    -->
+
+    <!-- rsyslog appender
+    <appender name="SYSLOG" class="ch.qos.logback.classic.net.SyslogAppender">
+        <syslogHost>HOSTNAME</syslogHost>
+        <facility>LOCAL5</facility>
+        <suffixPattern>[${app.name}] - [%level] -[%file:%line] - %message%n%xException{20}</suffixPattern>
+    </appender>
+    -->
+
+    <logger name="com.identityblitz.idp.events" additivity="false">
+        <appender-ref ref="EVENTS" />
+    </logger>
+
+    <root>
+        <appender-ref ref="FILE" />
+        <!-- <appender-ref ref="SYSLOG" /> -->
+        <!-- <appender-ref ref="STDOUT" /> -->
+    </root>
+
+</configuration>

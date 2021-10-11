@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    background: url("ib-pattern.png") center center;
+    color: #fff;
+    font: 13px Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    height: 100%;
+    min-width: 360px;
+    width: 100%;
+}
+a {
+    color: #fff;
+    text-decoration: underline;
+}
+a:hover,
+a:focus {
+    text-decoration: none;
+}
+
+#main {
+    z-index: 1;
+    position: relative;
+    height: 100%;
+    margin: 0 auto;
+    max-width: 482px;
+    min-width: 360px;
+    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.35);
+    -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.35);
+    -ms-box-shadow: 0 0 3px rgba(0, 0, 0, 0.35);
+    -o-box-shadow: 0 0 3px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.35);
+}
+body>#main {
+    min-height: 100%;
+    height: auto;
+}
+body.blue #main {
+    background: #00bde5;
+}
+body.orange #main {
+    background: #fb5129;
+}
+body.yellow #main {
+    background: #fd9f1a;
+}
+
+header {
+    display: block;
+    padding: 35px 0 40px;
+    text-align: center;
+}
+header .logo-ib {
+    height: 32px;
+}
+
+#content .page-title {
+    font-size: 36px;
+    margin-bottom: 35px;
+    text-align: center;
+}
+
+#content .error-icon.ufo {
+    background: url("icon-ufo.png") center top no-repeat;
+    height: 170px;
+}
+#content .error-icon.rocket {
+    background: url("icon-rocket.png") center top no-repeat;
+    height: 170px;
+}
+#content .error-icon.robot {
+    background: url("icon-robot.png") center top no-repeat;
+    height: 170px;
+}
+#content .error-icon.bomb {
+    background: url("icon-bomb.png") center top no-repeat;
+    height: 170px;
+}
+
+#content {
+    padding: 0 24px 100px;
+}
+#content .sub-title {
+    font-size: 20px;
+    margin-bottom: 35px;
+    text-align: center;
+}
+#content p.error-text {
+    font-size: 15px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+footer {
+    z-index: 2;
+    position: absolute;
+    bottom: 0;
+    padding: 35px 0 25px;
+    text-align: center;
+    width: 100%;
+}
+footer p {
+    margin-bottom: 10px;
+}
