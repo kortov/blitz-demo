@@ -1,2 +1,19 @@
-# blitz-demo
-Blitz IdP Demo
+# Blitz Identity Provider Demo
+Сервер аутентификации **Blitz Identity Provider** (Blitz IdP) — это программное обеспечение для управления входом пользователей в приложения. Оно позволяет оснастить веб-сайты и мобильные приложения компании функциями защиты учетных записей пользователей, построенными с учетом лучших современных практик безопасности.
+
+### Для запуска демонстрационной версии необходимо:
+1. Установить и запустить [Docker Desktop](https://www.docker.com/products/docker-desktop) (для успешного запуска Blitz IdP потребуется выделить для Docker около 3GB RAM)
+2. Склонировать данный репозиторий командой:  
+`git clone https://github.com/reaxoft/blitz-demo.git`
+3. Перейти в директорию с файлами из репозитория
+4. Запустить Blitz IdP командой:  
+`docker-compose up -d`
+
+Для остановки Blitz IdP выполните команду:  
+`docker-compose down`
+
+### После запуска будут доступны следующие адреса:
+Консоль администрирования:  https://localhost/blitz/console  
+Логин/пароль от консоли: admin / blitz-demo
+
+Личный кабинет пользователя: https://localhost/blitz/profile
