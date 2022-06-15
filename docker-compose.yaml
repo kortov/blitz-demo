@@ -50,7 +50,7 @@ services:
       - blitz-net
 
   rabbitmq:
-    image: rabbitmq:3-management-alpine
+    image: rabbitmq:3.9.5-management-alpine
     container_name: rabbitmq
     restart: unless-stopped
     volumes:
