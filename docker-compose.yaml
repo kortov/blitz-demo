@@ -41,6 +41,10 @@ services:
       - ./postgresql/006-usr_htp_hmc_alg.sql:/docker-entrypoint-initdb.d/006-usr_htp_hmc_alg.sql
       - ./postgresql/007-usr_atr_cfm.sql:/docker-entrypoint-initdb.d/007-usr_atr_cfm.sql
       - ./postgresql/008-wak.sql:/docker-entrypoint-initdb.d/008-wak.sql
+      - ./postgresql/009-fix_pp_column.sql:/docker-entrypoint-initdb.d/009-fix_pp_column.sql
+      - ./postgresql/010-add_usr_prp.sql:/docker-entrypoint-initdb.d/010-add_usr_prp.sql
+      - ./postgresql/011-pp_audit.sql:/docker-entrypoint-initdb.d/011-pp_audit.sql
+      - ./postgresql/012-geo_to_audit.sql:/docker-entrypoint-initdb.d/012-geo_to_audit.sql
     environment:
       - TZ=Europe/Moscow
       - POSTGRES_PASSWORD=blitz_db_pass
@@ -63,7 +67,7 @@ services:
 
   blitz-console:
     restart: unless-stopped
-    image: reaxoft/blitz-console:5.6.8
+    image: reaxoft/blitz-console:5.10.3
     container_name: blitz-console
     environment:
       - TZ=Europe/Moscow
@@ -79,7 +83,7 @@ services:
 
   blitz-idp:
     restart: unless-stopped
-    image: reaxoft/blitz-idp:5.6.8
+    image: reaxoft/blitz-idp:5.10.3
     container_name: blitz-idp
     environment:
       - TZ=Europe/Moscow
@@ -95,7 +99,7 @@ services:
 
   blitz-reg:
     restart: unless-stopped
-    image: reaxoft/blitz-registration:5.6.8
+    image: reaxoft/blitz-registration:5.10.3
     container_name: blitz-reg
     environment:
       - TZ=Europe/Moscow
@@ -111,7 +115,7 @@ services:
 
   blitz-rec:
     restart: unless-stopped
-    image: reaxoft/blitz-recovery:5.6.8
+    image: reaxoft/blitz-recovery:5.10.3
     container_name: blitz-rec
     environment:
       - TZ=Europe/Moscow

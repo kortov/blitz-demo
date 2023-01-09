@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import com.identityblitz.idp.login.authn.flow.Context;
 import com.identityblitz.idp.login.authn.flow.Strategy;
 import com.identityblitz.idp.login.authn.flow.StrategyState;
+import com.identityblitz.idp.login.authn.flow.StrategyBeginState;
 import com.identityblitz.idp.flow.dynamic.*;
 
 import static com.identityblitz.idp.login.authn.flow.StrategyState.*;
@@ -16,7 +17,7 @@ public class AccessByAttribute implements Strategy {
     private final Logger logger = LoggerFactory.getLogger("com.identityblitz.idp.flow.dynamic");
 
 
-    @Override public StrategyState begin(final Context ctx) {
+    @Override public StrategyBeginState begin(final Context ctx) {
         if(ctx.claims("subjectId") != null){
 
 // if the user is already authenticated, then check his attribute access
@@ -60,11 +61,14 @@ public class AccessByAttribute implements Strategy {
 
         if(!hasAccess)
             return StrategyState.DENY;
-        String reqFactor = ctx.userProps("requiredFactor");
-        if(reqFactor == null)
+      	Integer reqFactor = 0;
+     	if (ctx.user() != null) {
+            reqFactor = ctx.user().requiredFactor();
+        }
+        if (reqFactor == 0)
             return StrategyState.ENOUGH();
         else {
-            if(Integer.valueOf(reqFactor) == ctx.justCompletedFactor())
+            if (reqFactor == ctx.justCompletedFactor())
                 return StrategyState.ENOUGH();
             else
                 return StrategyState.MORE(new String[]{});

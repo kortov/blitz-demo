@@ -20,7 +20,7 @@
             <pattern>%date - [%level] -[%file:%line] - %message%n%xException{20}</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${dir.logs}/${app.name}.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+            <fileNamePattern>${dir.logs}/${app.name}-events.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
             <maxHistory>90</maxHistory>
             <totalSizeCap>10GB</totalSizeCap>
         </rollingPolicy>
