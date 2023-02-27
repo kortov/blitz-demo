@@ -1,0 +1,19 @@
+{
+    "type": "specialize",
+    "name": "scope1",
+    "desc": "",
+    "issue": {
+        "ttlInSec": 3600,
+        "allowedScopes": ["openid","testsys1"],
+        "allowedClaims": ["sub"],
+        "addingScopes": [],
+        "addingClaims": []
+    },
+    "subjectTokenCond": {
+        "clientRights": [],
+        "userRights": [],
+        "scopes": ["testsys1"],
+        "userClaims": {},
+        "userGroups": []
+    }
+}

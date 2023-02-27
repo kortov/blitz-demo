@@ -1,0 +1,27 @@
+{
+    "type": "specialize",
+    "name": "testright",
+    "desc": "",
+    "issue": {
+        "ttlInSec": 3600,
+        "allowedScopes": ["openid","testsys1"],
+        "allowedClaims": ["sub"],
+        "addingScopes": [],
+        "addingClaims": []
+    },
+    "subjectTokenCond": {
+        "clientRights": [],
+        "userRights": [
+            {
+                "rights": ["mng_rights_on"],
+                "target": {
+                    "type": "its",
+                    "name": "test-app1"
+                }
+            }
+        ],
+        "scopes": [],
+        "userClaims": {},
+        "userGroups": []
+    }
+}
