@@ -35,6 +35,7 @@ services:
     restart: unless-stopped
     volumes:
       - pg-data:/var/lib/postgresql/data
+      - ./postgresql/000-service-tasks.sql:/docker-entrypoint-initdb.d/000-service-tasks.sql
       - ./postgresql/001-init-database.sql:/docker-entrypoint-initdb.d/001-init-database.sql
       - ./postgresql/002-new_pp_columns.sql:/docker-entrypoint-initdb.d/002-new_pp_columns.sql
       - ./postgresql/003-usd_id_table.sql:/docker-entrypoint-initdb.d/003-usd_id_table.sql
@@ -48,6 +49,9 @@ services:
       - ./postgresql/011-pp_audit.sql:/docker-entrypoint-initdb.d/011-pp_audit.sql
       - ./postgresql/012-geo_to_audit.sql:/docker-entrypoint-initdb.d/012-geo_to_audit.sql
       - ./postgresql/013-tasks.sql:/docker-entrypoint-initdb.d/013-tasks.sql
+      - ./postgresql/014-sec_ch_ua.sql:/docker-entrypoint-initdb.d/014-sec_ch_ua.sql
+      - ./postgresql/015-5.12.0.sql:/docker-entrypoint-initdb.d/015-5.12.0.sql
+      - ./postgresql/016-5.13.0.sql:/docker-entrypoint-initdb.d/016-5.13.0.sql
       - ./postgresql/099-test_data.sql:/docker-entrypoint-initdb.d/099-test_data.sql
     environment:
       - TZ=Europe/Moscow
@@ -59,7 +63,7 @@ services:
 
   blitz-console:
     restart: unless-stopped
-    image: reaxoft/blitz-console:5.11.0
+    image: reaxoft/blitz-console:5.14.1
     container_name: blitz-console
     environment:
       - TZ=Europe/Moscow
@@ -74,7 +78,7 @@ services:
 
   blitz-idp:
     restart: unless-stopped
-    image: reaxoft/blitz-idp:5.11.0
+    image: reaxoft/blitz-idp:5.14.1
     container_name: blitz-idp
     environment:
       - TZ=Europe/Moscow
@@ -89,7 +93,7 @@ services:
 
   blitz-reg:
     restart: unless-stopped
-    image: reaxoft/blitz-registration:5.11.0
+    image: reaxoft/blitz-registration:5.14.1
     container_name: blitz-reg
     environment:
       - TZ=Europe/Moscow
@@ -104,7 +108,7 @@ services:
 
   blitz-rec:
     restart: unless-stopped
-    image: reaxoft/blitz-recovery:5.11.0
+    image: reaxoft/blitz-recovery:5.14.1
     container_name: blitz-rec
     environment:
       - TZ=Europe/Moscow
