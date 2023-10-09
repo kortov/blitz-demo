@@ -64,7 +64,7 @@ services:
 
   blitz-console:
     restart: unless-stopped
-    image: reaxoft/blitz-console:5.16.1
+    image: reaxoft/blitz-console:5.16.2
     container_name: blitz-console
     environment:
       - TZ=Europe/Moscow
@@ -79,7 +79,7 @@ services:
 
   blitz-idp:
     restart: unless-stopped
-    image: reaxoft/blitz-idp:5.16.1
+    image: reaxoft/blitz-idp:5.16.2
     container_name: blitz-idp
     environment:
       - TZ=Europe/Moscow
@@ -94,7 +94,7 @@ services:
 
   blitz-reg:
     restart: unless-stopped
-    image: reaxoft/blitz-registration:5.16.1
+    image: reaxoft/blitz-registration:5.16.2
     container_name: blitz-reg
     environment:
       - TZ=Europe/Moscow
@@ -109,7 +109,7 @@ services:
 
   blitz-rec:
     restart: unless-stopped
-    image: reaxoft/blitz-recovery:5.16.1
+    image: reaxoft/blitz-recovery:5.16.2
     container_name: blitz-rec
     environment:
       - TZ=Europe/Moscow
