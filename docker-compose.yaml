@@ -53,6 +53,8 @@ services:
       - ./postgresql/015-5.12.0.sql:/docker-entrypoint-initdb.d/015-5.12.0.sql
       - ./postgresql/016-5.13.0.sql:/docker-entrypoint-initdb.d/016-5.13.0.sql
       - ./postgresql/017-5.15.0.sql:/docker-entrypoint-initdb.d/017-5.15.0.sql
+      - ./postgresql/018-5.17.0.sql:/docker-entrypoint-initdb.d/018-5.17.0.sql
+      - ./postgresql/019-5.18.0.sql:/docker-entrypoint-initdb.d/019-5.18.0.sql
       - ./postgresql/099-test_data.sql:/docker-entrypoint-initdb.d/099-test_data.sql
     environment:
       - TZ=Europe/Moscow
@@ -64,13 +66,15 @@ services:
 
   blitz-console:
     restart: unless-stopped
-    image: reaxoft/blitz-console:5.16.2
+    image: reaxoft/blitz-console:5.18.0
     container_name: blitz-console
     environment:
       - TZ=Europe/Moscow
     volumes:
       - ./blitz-config:/usr/share/identityblitz/blitz-config
       - ./logs:/usr/share/identityblitz/logs
+    tmpfs:
+      - /tmp
     depends_on:
       - memcached
       - postgres
@@ -79,13 +83,15 @@ services:
 
   blitz-idp:
     restart: unless-stopped
-    image: reaxoft/blitz-idp:5.16.2
+    image: reaxoft/blitz-idp:5.18.0
     container_name: blitz-idp
     environment:
       - TZ=Europe/Moscow
     volumes:
       - ./blitz-config:/usr/share/identityblitz/blitz-config
       - ./logs:/usr/share/identityblitz/logs
+    tmpfs:
+      - /tmp
     depends_on:
       - memcached
       - postgres
@@ -94,13 +100,15 @@ services:
 
   blitz-reg:
     restart: unless-stopped
-    image: reaxoft/blitz-registration:5.16.2
+    image: reaxoft/blitz-registration:5.18.0
     container_name: blitz-reg
     environment:
       - TZ=Europe/Moscow
     volumes:
       - ./blitz-config:/usr/share/identityblitz/blitz-config
       - ./logs:/usr/share/identityblitz/logs
+    tmpfs:
+      - /tmp
     depends_on:
       - memcached
       - postgres
@@ -109,13 +117,15 @@ services:
 
   blitz-rec:
     restart: unless-stopped
-    image: reaxoft/blitz-recovery:5.16.2
+    image: reaxoft/blitz-recovery:5.18.0
     container_name: blitz-rec
     environment:
       - TZ=Europe/Moscow
     volumes:
       - ./blitz-config:/usr/share/identityblitz/blitz-config
       - ./logs:/usr/share/identityblitz/logs
+    tmpfs:
+      - /tmp
     depends_on:
       - memcached
       - postgres
