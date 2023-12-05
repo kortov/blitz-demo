@@ -134,7 +134,7 @@ services:
 
   blitz-keeper:
     restart: unless-stopped
-    image: reaxoft/blitz-keeper:5.11.0
+    image: reaxoft/blitz-keeper:5.11.3
     container_name: blitz-keeper
     ports:
       - 9012:9012
