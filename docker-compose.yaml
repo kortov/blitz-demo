@@ -61,6 +61,7 @@ services:
       - ./postgresql/023-5.26.0.sql:/docker-entrypoint-initdb.d/023-5.26.0.sql
       - ./postgresql/024-5.27.0.sql:/docker-entrypoint-initdb.d/024-5.27.0.sql
       - ./postgresql/025-5.28.0.sql:/docker-entrypoint-initdb.d/025-5.28.0.sql
+      - ./postgresql/099-test_data.sql:/docker-entrypoint-initdb.d/099-test_data.sql
     environment:
       - TZ=Europe/Moscow
       - POSTGRES_PASSWORD=blitz_db_pass
@@ -71,7 +72,7 @@ services:
 
   blitz-console:
     restart: unless-stopped
-    image: reaxoft/blitz-console:5.28.0
+    image: reaxoft/blitz-console:5.28.4
     container_name: blitz-console
     environment:
       - TZ=Europe/Moscow
@@ -88,7 +89,7 @@ services:
 
   blitz-idp:
     restart: unless-stopped
-    image: reaxoft/blitz-idp:5.28.0
+    image: reaxoft/blitz-idp:5.28.4
     container_name: blitz-idp
     environment:
       - TZ=Europe/Moscow
@@ -105,7 +106,7 @@ services:
 
   blitz-reg:
     restart: unless-stopped
-    image: reaxoft/blitz-registration:5.28.0
+    image: reaxoft/blitz-registration:5.28.4
     container_name: blitz-reg
     environment:
       - TZ=Europe/Moscow
@@ -122,7 +123,7 @@ services:
 
   blitz-rec:
     restart: unless-stopped
-    image: reaxoft/blitz-recovery:5.28.0
+    image: reaxoft/blitz-recovery:5.28.4
     container_name: blitz-rec
     environment:
       - TZ=Europe/Moscow
