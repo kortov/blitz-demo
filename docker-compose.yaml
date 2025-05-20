@@ -69,6 +69,8 @@ services:
       - POSTGRES_DB=blitzdb
     networks:
       - blitz-net
+    ports:
+      - 5432:5432
 
   blitz-console:
     restart: unless-stopped
@@ -144,14 +146,29 @@ services:
     container_name: blitz-keeper
     ports:
       - 9012:9012
+      - 5005:5005
     environment:
       - TZ=Europe/Moscow
+      - JAVA_HOME=/usr/local/openjdk-8
+      - PIDFILE=/usr/share/identityblitz/blitz-keeper/RUNNING_PID
+      - master_key=eb5C97fC864aE03d1eDa4f35aA8c3b8d
+      - conf_file=/etc/blitz-keeper/blitz-keeper.conf
+      - JAVA_TOOL_OPTIONS="-agentlib:jdwp=transport=dt_socket,address=5005,server=y,suspend=n"
     volumes:
       - ./blitz-keeper:/etc/blitz-keeper
       - ./logs:/var/log/identityblitz
       - ./blitz-keeper/blitz-keeper:/etc/default/blitz-keeper
     depends_on:
       - blitz-idp
+    networks:
+      - blitz-net
+
+  httpbin:
+    restart: unless-stopped
+    image: kennethreitz/httpbin
+    container_name: httpbin
+    ports:
+      - 8082:80
     networks:
       - blitz-net
 

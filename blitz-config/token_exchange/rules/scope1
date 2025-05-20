@@ -4,7 +4,7 @@
     "desc": "",
     "issue": {
         "ttlInSec": 3600,
-        "allowedScopes": ["openid","testsys1"],
+        "allowedScopes": ["openid","testsys1, profile"],
         "allowedClaims": ["sub"],
         "addingScopes": [],
         "addingClaims": []
