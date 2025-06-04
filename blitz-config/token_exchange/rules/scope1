@@ -4,7 +4,7 @@
     "desc": "",
     "issue": {
         "ttlInSec": 3600,
-        "allowedScopes": ["openid","testsys1, profile"],
+        "allowedScopes": ["openid","profile"],
         "allowedClaims": ["sub"],
         "addingScopes": [],
         "addingClaims": []
@@ -12,7 +12,7 @@
     "subjectTokenCond": {
         "clientRights": [],
         "userRights": [],
-        "scopes": ["testsys1"],
+        "scopes": ["openid"],
         "userClaims": {},
         "userGroups": []
     }
